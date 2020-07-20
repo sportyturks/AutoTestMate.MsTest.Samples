@@ -6,9 +6,9 @@
     <!-- Path relative to solution directory -->
     <ResultsDirectory>.\TestResults</ResultsDirectory>
     <!-- [x86] | x64    - You can also change it from menu Test, Test Settings, Default Processor Architecture -->
-    <TargetPlatform>x86</TargetPlatform>
-    <!-- Framework35 | [Framework40] | Framework45 -->
-    <TargetFrameworkVersion>Framework45</TargetFrameworkVersion>
+    <!--<TargetPlatform>x86</TargetPlatform>
+    --><!-- Framework35 | [Framework40] | Framework45 --><!--
+    <TargetFrameworkVersion>Framework45</TargetFrameworkVersion>-->
   </RunConfiguration>
 
   <TestRunParameters>
@@ -18,7 +18,7 @@
     <Parameter name="Timeout" value="10" />
     <Parameter name="OutputFileDirectory" value="\TestResults\" />
     <Parameter name="OutputFileScreenshotsDirectory" value="\TestResults\ScreenshotsDirectory\" />
-    <Parameter name="DriverServerLocation" value="C:\Developer\AutoTestMate\Main\AutoTestMate.Samples\AutoTestMate.Samples.Web.Tests\bin\Debug\netcoreapp3.1\" />
+    <Parameter name="DriverServerLocation" value="C:\Sources\AutoTestMate.MsTest.Samples\AutoTestMate.Samples.Web.Tests\bin\Debug\netcoreapp3.1\" />
     <Parameter name="LoginWaitTime" value="1" />
     <Parameter name="NavigateToBasePage" value="false" />
     <Parameter name="ForceKillProcess" value="true" />
@@ -26,6 +26,8 @@
     <Parameter name="BrowserType" value="Chrome" />
     <Parameter name="EnableDetailedLogging" value="false" />
     <Parameter name="BrowserOs" value="Windows" />
+    <Parameter name="UseSeleniumGrid" value="true" />
+    <Parameter name="SeleniumGridUrl" value="http://20.193.47.4:4444/wd/hub" />
   </TestRunParameters>
   <!-- MSTest adapter -->
   <MSTest>
