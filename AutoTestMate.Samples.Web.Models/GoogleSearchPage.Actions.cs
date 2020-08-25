@@ -1,5 +1,7 @@
-﻿using AutoTestMate.MsTest.Infrastructure.Core;
+﻿using System.Runtime.CompilerServices;
+using AutoTestMate.MsTest.Infrastructure.Core;
 using AutoTestMate.MsTest.Web.Core;
+using AutoTestMate.MsTest.Web.Core.MethodManager;
 using AutoTestMate.MsTest.Web.Extensions;
 using OpenQA.Selenium;
 
@@ -7,7 +9,7 @@ namespace AutoTestMate.Samples.Web.Models
 {
     public partial class GoogleSearchPage : BasePage, IGoogleSearchPage
     {
-        public GoogleSearchPage(IWebDriver driver, IConfigurationReader configurationReader, ILoggingUtility loggingUtility) : base(driver, configurationReader, loggingUtility)
+        public GoogleSearchPage([CallerMemberName] string testName = null) : base(testName)
         {
         }
 

@@ -12,4 +12,15 @@ namespace AutoTestMate.Samples.Web.Models
         GoogleSearchPage ClickSearchButton();
         void GoogleSearchPageAssertions();
     }
+
+    public interface IGoogleSearchPageContainer
+    {
+        IWebElement SearchTextBox { get; }
+        IWebElement ResultSearchButton { get; }
+        IWebElement SearchButton { get; }
+        GoogleSearchPageContainer Open();
+        GoogleSearchPageContainer AddSearchText(string text);
+        GoogleSearchPageContainer ClickSearchButton();
+        void GoogleSearchPageAssertions();
+    }
 }

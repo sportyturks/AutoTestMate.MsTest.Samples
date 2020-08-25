@@ -8,30 +8,34 @@ using Microsoft.VisualStudio.TestTools.UnitTesting;
 namespace AutoTestMate.Samples.Web.Tests
 {
     [TestClass]
-    public class SampleTests : WebTestBase
+    public class SampleTests1 : WebTestBase
     {
+        public IGoogleSearchPage GoogleSearchPage => TestManager.Container.Resolve<IGoogleSearchPage>();
+
         [TestInitialize]
         public override void OnTestInitialise()
         {
             base.OnTestInitialise();
+
+            var googleSearchPage = new GoogleSearchPage(TestMethod);
+            TestManager.Container.Register(Component.For<IGoogleSearchPage>().Instance(googleSearchPage).OverridesExistingRegistration().LifestyleSingleton());
         }
         [TestMethod]
         [ExcelClosedTestData(FileLocation = @"./Data", FileName = "NurseryRhymesBook.xlsx", RowKey = "8", SheetName = "TableThree")]
-        public void EnsureCorrectFieldsAccessed()
+        public void EnsureCorrectFieldsAccessed1()
         {
-            var configurationReader = GetConfigurationReader();
-            Assert.IsTrue(configurationReader.GetConfigurationValue("BrowserType") == "Chrome");
-            Assert.IsTrue(configurationReader.GetConfigurationValue("RowKey") == "8");
-            Assert.IsTrue(configurationReader.GetConfigurationValue("FieldSeven") == "Climbed");
-            Assert.IsTrue(configurationReader.GetConfigurationValue("FieldEight") == "Up");
-            Assert.IsTrue(configurationReader.GetConfigurationValue("FieldNine") == "The");
+            Assert.IsTrue(ConfigurationReader.GetConfigurationValue("BrowserType") == "Chrome");
+            Assert.IsTrue(ConfigurationReader.GetConfigurationValue("RowKey") == "8");
+            Assert.IsTrue(ConfigurationReader.GetConfigurationValue("FieldSeven") == "Climbed");
+            Assert.IsTrue(ConfigurationReader.GetConfigurationValue("FieldEight") == "Up");
+            Assert.IsTrue(ConfigurationReader.GetConfigurationValue("FieldNine") == "The");
             
             TestContext.WriteLine("Excel Attribute Passed with Flying Colors!");
         }
 
         [TestMethod]
         [ExcelClosedTestData(FileLocation = @"./Data", FileName = "NurseryRhymesBook.xlsx", RowKey = "5", SheetName = "TableTwo")]
-        public void GoogleSearchTestSimple()
+        public void GoogleSearchTestSimple1()
         {
             var googleSearchPage = new GoogleSearchPage();
 
@@ -41,20 +45,19 @@ namespace AutoTestMate.Samples.Web.Tests
                 .ClickSearchBox()
                 .ClickSearchButton();
 
-            var configurationReader = GetConfigurationReader();
-            Assert.IsNotNull(configurationReader);
-            Assert.IsTrue(configurationReader.GetConfigurationValue("BrowserType") == "Chrome");
-            Assert.IsTrue(configurationReader.GetConfigurationValue("RowKey") == "5");
-            Assert.IsTrue(configurationReader.GetConfigurationValue("FieldFour") == "Sheep");
-            Assert.IsTrue(configurationReader.GetConfigurationValue("FieldFive") == "Have");
-            Assert.IsTrue(configurationReader.GetConfigurationValue("FieldSix") == "You");
+            Assert.IsNotNull(ConfigurationReader);
+            Assert.IsTrue(ConfigurationReader.GetConfigurationValue("BrowserType") == "Chrome");
+            Assert.IsTrue(ConfigurationReader.GetConfigurationValue("RowKey") == "5");
+            Assert.IsTrue(ConfigurationReader.GetConfigurationValue("FieldFour") == "Sheep");
+            Assert.IsTrue(ConfigurationReader.GetConfigurationValue("FieldFive") == "Have");
+            Assert.IsTrue(ConfigurationReader.GetConfigurationValue("FieldSix") == "You");
         }
         
         [TestMethod]
         [ExcelClosedTestData(FileLocation = @"./Data", FileName = "NurseryRhymesBook.xlsx", RowKey = "3", SheetName = "TableOne")]
-        public void GoogleSearchTestContainerExample()
+        public void GoogleSearchTestContainerExample1()
         {
-            var googleSearchPage = new GoogleSearchPage();
+            var googleSearchPage = GoogleSearchPage;
 
             googleSearchPage
                 .Open()
