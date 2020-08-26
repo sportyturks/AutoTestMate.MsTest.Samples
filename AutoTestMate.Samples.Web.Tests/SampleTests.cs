@@ -1,8 +1,6 @@
 using AutoTestMate.MsTest.Infrastructure.Attributes;
-using AutoTestMate.MsTest.Infrastructure.Core;
 using AutoTestMate.MsTest.Web.Core;
 using AutoTestMate.Samples.Web.Models;
-using Castle.MicroKernel.Registration;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
 namespace AutoTestMate.Samples.Web.Tests
