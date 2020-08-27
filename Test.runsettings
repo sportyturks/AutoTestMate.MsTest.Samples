@@ -10,7 +10,7 @@
     <!-- Framework35 | [Framework40] | Framework45 -->
     <!-- Framework35 | [Framework40] | Framework45 -->
     <TargetFrameworkVersion>Framework45</TargetFrameworkVersion>
-    <DisableParallelization>false</DisableParallelization>
+    <DisableParallelization>true</DisableParallelization>
     <MaxCpuCount>2</MaxCpuCount>
   </RunConfiguration>
 
@@ -29,7 +29,7 @@
     <Parameter name="BrowserType" value="Chrome" />
     <Parameter name="BrowserProfile" value="default" />
     <Parameter name="EnableDetailedLogging" value="false" />
-    <Parameter name="UseSeleniumGrid" value="true" />
+    <Parameter name="UseSeleniumGrid" value="false" />
     <Parameter name="SeleniumGridUrl" value="http://localhost:4444/wd/hub" />
   </TestRunParameters>
   <!-- MSTest adapter -->
