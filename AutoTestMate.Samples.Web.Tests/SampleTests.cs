@@ -67,5 +67,41 @@ namespace AutoTestMate.Samples.Web.Tests
             Assert.IsTrue(ConfigurationReader.GetConfigurationValue("FieldTwo") == "The");
             Assert.IsTrue(ConfigurationReader.GetConfigurationValue("FieldThree") == "Tree");
         }
+
+        [TestMethod]
+        [ExcelClosedTestData(FileLocation = @"./Data", FileName = "NurseryRhymesBook.xlsx", RowKey = "8", SheetName = "TableThree")]
+        public void GoogleSearchTest()
+        {
+            var googleSearchPage = new GoogleSearchPage();
+            var s = ConfigurationReader.Settings;
+            var search = $"{s["FieldSeven"]} {s["FieldEight"]} {s["FieldNine"]}";
+            TestManager.TestContext.WriteLine($"Test ExcelData Google search for {search}");
+
+            googleSearchPage
+                .Open()
+                .AddSearchText(search)
+                .ClickSearchBox()
+                .ClickSearchButton();
+
+            Assert.IsNotNull(ConfigurationReader);
+        }
+
+        [TestMethod]
+        [DataRow("Latest News")]
+        [DataRow("Automation Testing")]
+        [DataRow("Selenium Grid")]
+        public void GoogleSearchDataRowTest(string search)
+        {
+            var googleSearchPage = new GoogleSearchPage();
+            TestManager.TestContext.WriteLine($"Test DataRow Google search for {search}");
+
+            googleSearchPage
+                .Open()
+                .AddSearchText(search)
+                .ClickSearchBox()
+                .ClickSearchButton();
+
+            Assert.IsNotNull(ConfigurationReader);
+        }
     }
 }
