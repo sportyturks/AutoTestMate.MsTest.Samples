@@ -10,8 +10,8 @@
     <!-- Framework35 | [Framework40] | Framework45 -->
     <!-- Framework35 | [Framework40] | Framework45 -->
     <!--<TargetFrameworkVersion>Framework45</TargetFrameworkVersion>-->
-    <!--<DisableParallelization>true</DisableParallelization>-->
-    <MaxCpuCount>4</MaxCpuCount>
+    <DisableParallelization>false</DisableParallelization>
+    <MaxCpuCount>2</MaxCpuCount>
   </RunConfiguration>
 
   <TestRunParameters>
@@ -40,7 +40,7 @@
 
   <MSTest>
     <Parallelize>
-      <Workers>0</Workers>
+      <Workers>4</Workers>
       <Scope>MethodLevel</Scope>
     </Parallelize>
     <MapInconclusiveToFailed>True</MapInconclusiveToFailed>
