@@ -1,4 +1,7 @@
+using System.IO;
+using System.Reflection;
 using AutoTestMate.MsTest.Infrastructure.Attributes;
+using AutoTestMate.MsTest.Infrastructure.Helpers;
 using AutoTestMate.MsTest.Web.Core;
 using AutoTestMate.Samples.Web.Models;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
@@ -18,12 +21,13 @@ namespace AutoTestMate.Samples.Web.Tests
         public void EnsureCorrectFieldsAccessed()
         {
             var configurationReader = GetConfigurationReader();
-            Assert.IsTrue(configurationReader.GetConfigurationValue("BrowserType") == "Chrome");
+
             Assert.IsTrue(configurationReader.GetConfigurationValue("RowKey") == "8");
-            Assert.IsTrue(configurationReader.GetConfigurationValue("FieldSeven") == "Climbed");
-            Assert.IsTrue(configurationReader.GetConfigurationValue("FieldEight") == "Up");
-            Assert.IsTrue(configurationReader.GetConfigurationValue("FieldNine") == "The");
-            
+            Assert.IsTrue(configurationReader.GetConfigurationValue("FieldSeven").ToLower() == "climbed");
+            Assert.IsTrue(configurationReader.GetConfigurationValue("FieldEight").ToLower() == "up");
+            Assert.IsTrue(configurationReader.GetConfigurationValue("FieldNine").ToLower() == "the");
+
+
             TestContext.WriteLine("Excel Attribute Passed with Flying Colors!");
         }
 
@@ -40,12 +44,12 @@ namespace AutoTestMate.Samples.Web.Tests
                 .ClickSearchButton();
 
             var configurationReader = GetConfigurationReader();
+
             Assert.IsNotNull(configurationReader);
-            Assert.IsTrue(configurationReader.GetConfigurationValue("BrowserType") == "Chrome");
             Assert.IsTrue(configurationReader.GetConfigurationValue("RowKey") == "5");
-            Assert.IsTrue(configurationReader.GetConfigurationValue("FieldFour") == "Sheep");
-            Assert.IsTrue(configurationReader.GetConfigurationValue("FieldFive") == "Have");
-            Assert.IsTrue(configurationReader.GetConfigurationValue("FieldSix") == "You");
+            Assert.IsTrue(configurationReader.GetConfigurationValue("FieldFour").ToLower() == "sheep");
+            Assert.IsTrue(configurationReader.GetConfigurationValue("FieldFive").ToLower() == "have");
+            Assert.IsTrue(configurationReader.GetConfigurationValue("FieldSix").ToLower() == "you");
         }
         
         [TestMethod]
@@ -60,12 +64,13 @@ namespace AutoTestMate.Samples.Web.Tests
                 .ClickSearchBox()
                 .ClickSearchButton();
 
+            var configurationReader = GetConfigurationReader();
+
             Assert.IsNotNull(ConfigurationReader);
-            Assert.IsTrue(ConfigurationReader.GetConfigurationValue("BrowserType") == "Chrome");
-            Assert.IsTrue(ConfigurationReader.GetConfigurationValue("RowKey") == "3");
-            Assert.IsTrue(ConfigurationReader.GetConfigurationValue("FieldOne") == "Over");
-            Assert.IsTrue(ConfigurationReader.GetConfigurationValue("FieldTwo") == "The");
-            Assert.IsTrue(ConfigurationReader.GetConfigurationValue("FieldThree") == "Tree");
+            Assert.IsTrue(configurationReader.GetConfigurationValue("RowKey") == "3");
+            Assert.IsTrue(configurationReader.GetConfigurationValue("FieldOne").ToLower() == "over");
+            Assert.IsTrue(configurationReader.GetConfigurationValue("FieldTwo").ToLower() == "the");
+            Assert.IsTrue(configurationReader.GetConfigurationValue("FieldThree").ToLower() == "tree");
         }
 
         [TestMethod]

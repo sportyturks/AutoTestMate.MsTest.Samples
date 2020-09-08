@@ -2,11 +2,11 @@
 
   <PropertyGroup>
     <TargetFramework>netcoreapp3.1</TargetFramework>
-    <AssemblyName>AutoTestMate.Samples.We.Models</AssemblyName>
+    <AssemblyName>AutoTestMate.Samples.Web.Models</AssemblyName>
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="AutoTestMate.MsTest.Web" Version="1.1.24" />
+    <PackageReference Include="AutoTestMate.MsTest.Web" Version="1.1.30" />
   </ItemGroup>
 
 </Project>
