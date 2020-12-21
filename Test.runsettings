@@ -29,7 +29,7 @@
     <Parameter name="BrowserType" value="firefox" />
     <Parameter name="BrowserProfile" value="default" />
     <Parameter name="EnableDetailedLogging" value="false" />
-    <Parameter name="UseSeleniumGrid" value="true" />
+    <Parameter name="UseSeleniumGrid" value="false" />
     <!--<Parameter name="SeleniumGridUrl" value="http://localhost:4444/wd/hub" />-->
     <Parameter name="SeleniumGridUrl" value="http://192.168.1.222:4444/wd/hub" />
     <!--<Parameter name="CalculatorHomePageUrl" value="https://localhost:5001" />-->
