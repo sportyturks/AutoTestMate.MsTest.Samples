@@ -1,12 +1,11 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <TargetFramework>netcoreapp3.1</TargetFramework>
-    <AssemblyName>AutoTestMate.Samples.Web.Models</AssemblyName>
+    <TargetFramework>net5.0</TargetFramework>
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="AutoTestMate.MsTest.Web" Version="1.1.30" />
+    <PackageReference Include="AutoTestMate.MsTest.Web" Version="1.2.0" />
   </ItemGroup>
 
 </Project>
