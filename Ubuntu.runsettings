@@ -1,0 +1,52 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+
+<RunSettings>
+  <!-- Configurations that affect the Test Framework -->
+  <RunConfiguration>
+    <!-- Path relative to solution directory -->
+    <ResultsDirectory>/home/jopo/Development/TestResults/</ResultsDirectory>
+    <!-- [x86] | x64    - You can also change it from menu Test, Test Settings, Default Processor Architecture -->
+    <TargetPlatform>x64</TargetPlatform>
+    <!-- Framework35 | [Framework40] | Framework45 -->
+    <!-- Framework35 | [Framework40] | Framework45 -->
+    <TargetFrameworkVersion>Framework45</TargetFrameworkVersion> 
+    <DisableParallelization>true</DisableParallelization>
+    <MaxCpuCount>6</MaxCpuCount>
+  </RunConfiguration>
+
+  <TestRunParameters>
+    <Parameter name="LogLevel" value="Debug" />
+    <Parameter name="LogName" value="WebTest" />
+    <Parameter name="BaseUrl" value="https://www.google.com" />
+    <Parameter name="DriverServerLocation" value="/home/jopo/Development/SeleniumDrivers" />
+    <Parameter name="Timeout" value="10" />
+    <Parameter name="OutputFileDirectory" value="/home/jopo/Development/TestResults" />
+    <Parameter name="OutputFileScreenshotsDirectory" value="/home/jopo/Development/TestResults/ScreenshotsDirectory" />
+    <Parameter name="LoginWaitTime" value="1" />
+    <Parameter name="NavigateToBasePage" value="false" />
+    <Parameter name="ForceKillProcess" value="false" />
+    <Parameter name="Headless" value="false" />
+    <Parameter name="BrowserType" value="chrome" />
+    <Parameter name="BrowserProfile" value="default" />
+    <Parameter name="BrowserOs" value="Linux" />
+    <Parameter name="EnableDetailedLogging" value="false" />
+    <Parameter name="UseSeleniumGrid" value="false" />
+    <!--<Parameter name="SeleniumGridUrl" value="http://localhost:4444/wd/hub" />-->
+    <Parameter name="SeleniumGridUrl" value="http://192.168.1.222:4444/wd/hub" />
+    <!--<Parameter name="CalculatorHomePageUrl" value="https://localhost:5001" />-->
+    <Parameter name="CalculatorHomePageUrl" value="https://ets-demo-test.azurewebsites.net" />
+  </TestRunParameters>
+  <!-- MSTest adapter -->
+  <!-- MSTest adapter -->
+
+  <MSTest>
+    <Parallelize>
+      <Workers>3</Workers>
+      <Scope>MethodLevel</Scope>
+    </Parallelize>
+    <MapInconclusiveToFailed>True</MapInconclusiveToFailed>
+    <CaptureTraceOutput>false</CaptureTraceOutput>
+    <DeleteDeploymentDirectoryAfterTestRunIsComplete>False</DeleteDeploymentDirectoryAfterTestRunIsComplete>
+    <DeploymentEnabled>False</DeploymentEnabled>
+  </MSTest>
+</RunSettings>
