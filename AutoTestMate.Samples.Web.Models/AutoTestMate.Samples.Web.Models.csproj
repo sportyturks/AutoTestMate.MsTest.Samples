@@ -5,7 +5,8 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="AutoTestMate.MsTest.Web" Version="1.2.0" />
+    <PackageReference Include="AutoTestMate.MsTest.Infrastructure" Version="1.2.1" />
+    <PackageReference Include="AutoTestMate.MsTest.Web" Version="1.2.1" />
   </ItemGroup>
 
 </Project>

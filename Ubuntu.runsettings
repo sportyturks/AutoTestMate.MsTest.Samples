@@ -7,9 +7,6 @@
     <ResultsDirectory>/home/jopo/Development/TestResults/</ResultsDirectory>
     <!-- [x86] | x64    - You can also change it from menu Test, Test Settings, Default Processor Architecture -->
     <TargetPlatform>x64</TargetPlatform>
-    <!-- Framework35 | [Framework40] | Framework45 -->
-    <!-- Framework35 | [Framework40] | Framework45 -->
-    <TargetFrameworkVersion>Framework45</TargetFrameworkVersion> 
     <DisableParallelization>true</DisableParallelization>
     <MaxCpuCount>6</MaxCpuCount>
   </RunConfiguration>
@@ -30,16 +27,11 @@
     <Parameter name="BrowserProfile" value="default" />
     <Parameter name="BrowserOs" value="Linux" />
     <Parameter name="EnableDetailedLogging" value="false" />
-    <Parameter name="UseSeleniumGrid" value="false" />
-    <!--<Parameter name="SeleniumGridUrl" value="http://localhost:4444/wd/hub" />-->
-    <Parameter name="SeleniumGridUrl" value="http://192.168.1.222:4444/wd/hub" />
-    <!--<Parameter name="CalculatorHomePageUrl" value="https://localhost:5001" />-->
-    <Parameter name="CalculatorHomePageUrl" value="https://ets-demo-test.azurewebsites.net" />
+    <Parameter name="UseSeleniumGrid" value="true" />
+    <Parameter name="SeleniumGridUrl" value="http://192.168.1.110:7001/wd/hub" />
+    <Parameter name="CalculatorHomePageUrl" value="http://192.168.1.111:8085" />
   </TestRunParameters>
-  <!-- MSTest adapter -->
-  <!-- MSTest adapter -->
-
-  <MSTest>
+    <MSTest>
     <Parallelize>
       <Workers>3</Workers>
       <Scope>MethodLevel</Scope>
