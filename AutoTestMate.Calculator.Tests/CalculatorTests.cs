@@ -37,5 +37,19 @@ namespace AutoTestMate.Calculator.Tests
 
             calcPage.AssertValue(expected);
         }
+        
+        [TestMethod]
+        [DataRow("4,*,(,3,-,4,/,2,)", 4)]
+        public void CalculateDataRowTestSingle(string ops, double expected)
+        {
+            var calcPage = new CalculatorPage();
+            TestManager.TestContext.WriteLine($"Operation: {ops.Replace(",", " ")} = {expected}");
+
+            calcPage
+                .Open()
+                .Calculate(ops);
+
+            calcPage.AssertValue(expected);
+        }
     }
 }

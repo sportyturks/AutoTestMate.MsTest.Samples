@@ -23,7 +23,7 @@ namespace AutoTestMate.Calculator.Models
 
         public CalculatorPage Open()
         {
-            Driver.Navigate().GoToUrl($"{ConfigurationReader.GetConfigurationValue("CalculatorHomePageUrl")}/Home/Calculator");
+            Driver.Navigate().GoToUrl($"{ConfigurationReader.GetConfigurationValue("CalculatorHomePageUrl")}");
             LoadOperations();
             return this;
         }
