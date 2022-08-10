@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using AutoTestMate.Calculator.Models;
 using AutoTestMate.MsTest.Infrastructure.Core;
 using AutoTestMate.MsTest.Web.Core;
@@ -50,6 +51,33 @@ namespace AutoTestMate.Calculator.Tests
                 .Calculate(ops);
 
             calcPage.AssertValue(expected);
+        }
+        
+        [TestMethod]
+        public void CalculateDataRowTestGroup()
+        {
+            var calcPage = new CalculatorPage()
+                .Open();
+            
+            var operations = new Dictionary<string, double>()
+            {
+                { "1,+,1", 2 },
+                { "1,3,-,4", 9 },
+                { "2,*,3", 6 },
+                { "1,0,0,/,2,5", 4 },
+                { "1,+,2,*,(,4,-,6,)", -3 },
+                { "4,*,(,3,-,4,/,2,)", 4 },
+            };
+
+            foreach (var operation in operations)
+            {
+                TestManager.TestContext.WriteLine($"Operation: {operation.Key.Replace(",", " ")} = {operation.Value}");
+                
+                calcPage
+                    .Calculate(operation.Key)
+                    .Clear()
+                    .AssertValue(operation.Value);
+            }
         }
     }
 }

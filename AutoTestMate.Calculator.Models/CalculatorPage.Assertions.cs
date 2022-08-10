@@ -8,11 +8,13 @@ namespace AutoTestMate.Calculator.Models
 {
     public partial class CalculatorPage
     {
-        public void AssertValue(double expected)
+        public CalculatorPage AssertValue(double expected)
         {
             Result.VisibleWait();
             var value = Result.GetAttribute("value");
             Assert.AreEqual(expected.ToString(), value);
+            
+            return this;
         }
     }
 }

@@ -14,9 +14,11 @@ namespace AutoTestMate.Calculator.Models
         IWebElement Ob { get; }
         IWebElement Cb { get; }
         IWebElement ResultBtn { get; }
+        IWebElement Clr { get; }
         IDictionary<string, IWebElement> Ops { get; }
         CalculatorPage Open();
-        void Calculate(string ops);
-        void AssertValue(double expected);
+        CalculatorPage Calculate(string ops);
+        CalculatorPage AssertValue(double expected);
+        CalculatorPage Clear();
     }
 }

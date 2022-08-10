@@ -41,7 +41,7 @@ namespace AutoTestMate.Calculator.Models
         public IWebElement Ob => Driver.FindElement(By.Id(ObId));
         public IWebElement Cb => Driver.FindElement(By.Id(CbId));
         public IWebElement ResultBtn => Driver.FindElement(By.Id(ResultBtnId));
-
+        public IWebElement Clr => Driver.FindElement(By.Id("clr"));
         public IDictionary<string, IWebElement> Ops { get; private set; } = new Dictionary<string, IWebElement>();
     }
 }
