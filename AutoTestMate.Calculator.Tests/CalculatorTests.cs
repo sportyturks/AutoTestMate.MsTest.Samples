@@ -1,6 +1,7 @@
 using System.Collections.Generic;
 using AutoTestMate.Calculator.Models;
 using AutoTestMate.MsTest.Infrastructure.Core;
+using AutoTestMate.MsTest.Infrastructure.Helpers;
 using AutoTestMate.MsTest.Web.Core;
 using Castle.MicroKernel.Registration;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
@@ -11,15 +12,7 @@ namespace AutoTestMate.Calculator.Tests
     public class CalculatorTests : WebTestBase
     {
         public ICalculatorPage CalculatorPage => TestManager.Container.Resolve<ICalculatorPage>();
-
-        [TestInitialize]
-        public override void OnTestInitialise()
-        {
-            base.OnTestInitialise();
-
-            TestManager.Container.Register(Component.For<ICalculatorPage>().ImplementedBy<CalculatorPage>().OverridesExistingRegistration().LifestyleTransient());
-        }
-
+        
         [TestMethod]
         [DataRow("1,+,1", 2)]
         [DataRow("1,3,-,4", 9)]
@@ -29,34 +22,30 @@ namespace AutoTestMate.Calculator.Tests
         [DataRow("4,*,(,3,-,4,/,2,)", 4)]
         public void CalculateDataRowTest(string ops, double expected)
         {
-            var calcPage = new CalculatorPage();
             TestManager.TestContext.WriteLine($"Operation: {ops.Replace(",", " ")} = {expected}");
-
-            calcPage
+            
+            var calcPage = GetPage<CalculatorPage>()
                 .Open()
-                .Calculate(ops);
-
-            calcPage.AssertValue(expected);
+                .Calculate(ops)
+                .AssertValue(expected);
         }
         
         [TestMethod]
         [DataRow("4,*,(,3,-,4,/,2,)", 4)]
         public void CalculateDataRowTestSingle(string ops, double expected)
         {
-            var calcPage = new CalculatorPage();
             TestManager.TestContext.WriteLine($"Operation: {ops.Replace(",", " ")} = {expected}");
-
-            calcPage
+            
+            var calcPage = GetPage<CalculatorPage>()
                 .Open()
-                .Calculate(ops);
-
-            calcPage.AssertValue(expected);
+                .Calculate(ops)
+                .AssertValue(expected);
         }
         
         [TestMethod]
         public void CalculateDataRowTestGroup()
         {
-            var calcPage = new CalculatorPage()
+            var calcPage = GetPage<CalculatorPage>()
                 .Open();
             
             var operations = new Dictionary<string, double>()

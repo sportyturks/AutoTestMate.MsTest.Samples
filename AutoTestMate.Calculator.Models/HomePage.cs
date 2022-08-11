@@ -4,11 +4,12 @@ using OpenQA.Selenium;
 using OpenQA.Selenium.Remote;
 using System;
 using System.Collections.Generic;
+using System.Runtime.CompilerServices;
 using System.Text;
 
 namespace AutoTestMate.Calculator.Models
 {
-    public partial class HomePage : BasePage, IHomePage
+    public class HomePage : BasePage
     {
 
         public const string WelcomeSelector = "body > div > main > div > h1";
@@ -21,5 +22,15 @@ namespace AutoTestMate.Calculator.Models
         public IWebElement HomeMenu => Driver.FindElement(By.XPath(HomeMenuXPath));
         public IWebElement CalculatorMenu => Driver.FindElement(By.XPath(CalculatorMenuXPath));
         public IWebElement PrivacyMenu => Driver.FindElement(By.XPath(PrivacyMenuXPath));
+
+        public HomePage([CallerMemberName] string testName = null) : base(testName)
+        {
+        }
+
+        public HomePage Open()
+        {
+            Driver.Navigate().GoToUrl(ConfigurationReader.GetConfigurationValue("CalculatorHomePageUrl"));
+            return this;
+        }
     }
 }

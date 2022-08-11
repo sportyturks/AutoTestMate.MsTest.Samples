@@ -4,7 +4,7 @@
   <!-- Configurations that affect the Test Framework -->
   <RunConfiguration>
     <!-- Path relative to solution directory -->
-    <ResultsDirectory>.\TestResults</ResultsDirectory>
+    <ResultsDirectory>/home/jturks/development/proDev/testResults/</ResultsDirectory>
     <DisableParallelization>true</DisableParallelization>
     <MaxCpuCount>2</MaxCpuCount>
   </RunConfiguration>
@@ -13,9 +13,9 @@
     <Parameter name="LogLevel" value="Debug" />
     <Parameter name="LogName" value="WebTest" />
     <Parameter name="BaseUrl" value="https://www.google.com" />
-    <Parameter name="DriverServerLocation" value="C/home/jturks/development/proDev/seleniumDrivers/" />
+    <Parameter name="DriverServerLocation" value="/home/jturks/development/proDev/seleniumDrivers/" />
     <Parameter name="Timeout" value="10" />
-    <Parameter name="OutputFileDirectory" value="/home/jturks/development/proDev/testResults/" />
+    <Parameter name="OutputFileDirectory" value="/home/jturks/development/proDev/testResults" />
     <Parameter name="OutputFileScreenshotsDirectory" value="/home/jturks/development/proDev/testResults/screenshotsDirectory" />
     <Parameter name="LoginWaitTime" value="1" />
     <Parameter name="NavigateToBasePage" value="false" />
@@ -27,6 +27,7 @@
     <Parameter name="UseSeleniumGrid" value="true" />
     <Parameter name="SeleniumGridUrl" value="http://moon.aerokube.local/wd/hub" />
     <Parameter name="CalculatorHomePageUrl" value="https://autotestmate.info/calculator" />
+    <Parameter name="UseAop" value="true" />
   </TestRunParameters>
     <MSTest>
     <Parallelize>
