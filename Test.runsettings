@@ -5,8 +5,8 @@
   <RunConfiguration>
     <!-- Path relative to solution directory -->
     <ResultsDirectory>/home/jturks/development/proDev/testResults/</ResultsDirectory>
-    <DisableParallelization>true</DisableParallelization>
-    <MaxCpuCount>2</MaxCpuCount>
+    <DisableParallelization>false</DisableParallelization>
+    <MaxCpuCount>4</MaxCpuCount>
   </RunConfiguration>
 
   <TestRunParameters>
@@ -15,9 +15,9 @@
     <Parameter name="BaseUrl" value="https://www.google.com" />
     <Parameter name="DriverServerLocation" value="/home/jturks/development/proDev/seleniumDrivers/" />
     <Parameter name="Timeout" value="10" />
-    <Parameter name="OutputFileDirectory" value="/home/jturks/development/proDev/testResults" />
+    <Parameter name="OutputFileDirectory" value="/home/jturks/development/proDev/testResults/" />
     <Parameter name="OutputFileScreenshotsDirectory" value="/home/jturks/development/proDev/testResults/screenshotsDirectory" />
-    <Parameter name="LoginWaitTime" value="1" />
+    <Parameter name="LoginWaitTime" value="10" />
     <Parameter name="NavigateToBasePage" value="false" />
     <Parameter name="ForceKillProcess" value="true" />
     <Parameter name="Headless" value="false" />
@@ -31,7 +31,7 @@
   </TestRunParameters>
     <MSTest>
     <Parallelize>
-      <Workers>2</Workers>
+      <Workers>4</Workers>
       <Scope>MethodLevel</Scope>
     </Parallelize>
     <MapInconclusiveToFailed>True</MapInconclusiveToFailed>

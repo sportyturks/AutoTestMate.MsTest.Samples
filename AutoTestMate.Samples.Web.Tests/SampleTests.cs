@@ -11,11 +11,6 @@ namespace AutoTestMate.Samples.Web.Tests
     [TestClass]
     public class SampleTests : WebTestBase
     {
-        [TestInitialize]
-        public override void OnTestInitialise()
-        {
-            base.OnTestInitialise();
-        }
         [TestMethod]
         [ExcelClosedTestData(FileLocation = @"./Data", FileName = "NurseryRhymesBook.xlsx", RowKey = "8", SheetName = "TableThree")]
         public void EnsureCorrectFieldsAccessed()
@@ -35,7 +30,7 @@ namespace AutoTestMate.Samples.Web.Tests
         [ExcelClosedTestData(FileLocation = @"./Data", FileName = "NurseryRhymesBook.xlsx", RowKey = "5", SheetName = "TableTwo")]
         public void GoogleSearchTestSimple()
         {
-            var googleSearchPage = new GoogleSearchPage();
+            var googleSearchPage = GetPage<GoogleSearchPage>();
 
             googleSearchPage
                 .Open()
@@ -56,7 +51,7 @@ namespace AutoTestMate.Samples.Web.Tests
         [ExcelClosedTestData(FileLocation = @"./Data", FileName = "NurseryRhymesBook.xlsx", RowKey = "3", SheetName = "TableOne")]
         public void GoogleSearchTestContainerExample()
         {
-            var googleSearchPage = new GoogleSearchPage();
+            var googleSearchPage = GetPage<GoogleSearchPage>();
 
             googleSearchPage
                 .Open()
@@ -77,28 +72,10 @@ namespace AutoTestMate.Samples.Web.Tests
         [ExcelClosedTestData(FileLocation = @"./Data", FileName = "NurseryRhymesBook.xlsx", RowKey = "8", SheetName = "TableThree")]
         public void GoogleSearchTest()
         {
-            var googleSearchPage = new GoogleSearchPage();
+            var googleSearchPage = GetPage<GoogleSearchPage>();
             var s = ConfigurationReader.Settings;
             var search = $"{s["FieldSeven"]} {s["FieldEight"]} {s["FieldNine"]}";
             TestManager.TestContext.WriteLine($"Test ExcelData Google search for {search}");
-
-            googleSearchPage
-                .Open()
-                .AddSearchText(search)
-                .ClickSearchBox()
-                .ClickSearchButton();
-
-            Assert.IsNotNull(ConfigurationReader);
-        }
-
-        [TestMethod]
-        [DataRow("Latest News")]
-        [DataRow("Automation Testing")]
-        [DataRow("Selenium Grid")]
-        public void GoogleSearchDataRowTest(string search)
-        {
-            var googleSearchPage = new GoogleSearchPage();
-            TestManager.TestContext.WriteLine($"Test DataRow Google search for {search}");
 
             googleSearchPage
                 .Open()
