@@ -4,7 +4,7 @@ namespace AutoTestMate.Samples.Web.Models
 {
     public partial class GoogleSearchPage
     {
-	    public IWebElement SearchTextBox => Driver.FindElement(By.XPath("//div//input[@title='Search']"));
+	    public IWebElement SearchTextBox => Driver.FindElement(By.XPath("//textarea[@name='q']"));
 
 	    public IWebElement ResultSearchButton => Driver.FindElement(By.XPath("//button[@aria-label='Google Search']"));
 
