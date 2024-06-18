@@ -9,7 +9,7 @@ namespace AutoTestMate.Samples.Web.Tests;
 [TestClass]
 public class SampleDataDrivenTests : WebTestBase
 {
-    public override string TestMethod => ReflectionExtensions.GetPropValue<string>(TestContext, "Context.testMethod.DisplayName");
+    public override string TestMethod => ReflectionExtensions.GetPropValue<string>(TestContext, "Context._testMethod.DisplayName");
     
     [TestMethod]
     [DataRow("Latest News", DisplayName = "GoogleSearchDataRowTest_1")]

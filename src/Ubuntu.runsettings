@@ -11,7 +11,7 @@
     <!-- Framework35 | [Framework40] | Framework45 -->
     <TargetFrameworkVersion>Framework45</TargetFrameworkVersion> 
     <DisableParallelization>true</DisableParallelization>
-    <MaxCpuCount>6</MaxCpuCount>
+    <MaxCpuCount>4</MaxCpuCount>
   </RunConfiguration>
 
   <TestRunParameters>
