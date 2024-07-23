@@ -47,6 +47,16 @@ namespace AutoTestMate.Calculator.Models
         public IWebElement Cb => Driver.FindElement(By.Id(CbId));
         public IWebElement ResultBtn => Driver.FindElement(By.Id(ResultBtnId));
         public IWebElement Clr => Driver.FindElement(By.Id("clr"));
+        public IWebElement Zero => Driver.FindElement(By.Id("0"));
+        public IWebElement One => Driver.FindElement(By.Id("1"));
+        public IWebElement Two => Driver.FindElement(By.Id("2"));
+        public IWebElement Three => Driver.FindElement(By.Id("3"));
+        public IWebElement Four => Driver.FindElement(By.Id("4"));
+        public IWebElement Five => Driver.FindElement(By.Id("5"));
+        public IWebElement Six => Driver.FindElement(By.Id("6"));
+        public IWebElement Seven => Driver.FindElement(By.Id("7"));
+        public IWebElement Eight => Driver.FindElement(By.Id("8"));
+        public IWebElement Nine => Driver.FindElement(By.Id("9"));
         public IDictionary<string, IWebElement> Ops { get; private set; } = new Dictionary<string, IWebElement>();
 
         public CalculatorPage([CallerMemberName] string testName = null) : base(testName)

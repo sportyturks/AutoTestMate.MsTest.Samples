@@ -23,9 +23,10 @@ namespace AutoTestMate.Calculator.Tests
         [TestMethod]
         public void CalculateDataRowTestGroup()
         {
+            const int testIterations = 4;
             var calcPage = GetPage<CalculatorPage>()
                 .Open();
-            
+
             var operations = new Dictionary<string, double>()
             {
                 { "1,+,1", 2 },
@@ -35,15 +36,18 @@ namespace AutoTestMate.Calculator.Tests
                 { "1,+,2,*,(,4,-,6,)", -3 },
                 { "4,*,(,3,-,4,/,2,)", 4 },
             };
-
-            foreach (var operation in operations)
+            
+            for (var i = 0; i < testIterations; i++)
             {
-                LoggingUtility.Info($"Operation: {operation.Key.Replace(",", " ")} = {operation.Value}", true);
-                
-                calcPage
-                    .Calculate(operation.Key)
-                    .Clear()
-                    .AssertValue(operation.Value);
+                foreach (var operation in operations)
+                {
+                    LoggingUtility.Info($"Operation: {operation.Key.Replace(",", " ")} = {operation.Value}", true);
+
+                    calcPage
+                        .Calculate(operation.Key)
+                        .Clear()
+                        .AssertValue(operation.Value);
+                }
             }
         }
     }

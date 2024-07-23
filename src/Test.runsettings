@@ -8,7 +8,7 @@
     <!-- [x86] | x64    - You can also change it from menu Test, Test Settings, Default Processor Architecture -->
     <TargetPlatform>x64</TargetPlatform>
     <DisableParallelization>false</DisableParallelization>
-    <MaxCpuCount>4</MaxCpuCount>
+    <MaxCpuCount>2</MaxCpuCount>
   </RunConfiguration>
 
   <TestRunParameters>
@@ -28,14 +28,14 @@
     <Parameter name="BrowserOs" value="Linux" />
     <Parameter name="EnableDetailedLogging" value="false" />
     <Parameter name="UseSeleniumGrid" value="true" />
-    <Parameter name="SeleniumGridUrl" value="https://moon-local.automation.delivery/wd/hub" />
+    <Parameter name="SeleniumGridUrl" value="https://moon.automation.delivery/wd/hub" />
     <Parameter name="UseAppSettings" value="false" />
-    <Parameter name="CalculatorHomePageUrl" value="https://autotestmate.info/calculator" />
+    <Parameter name="CalculatorHomePageUrl" value="https://calculator.automation.delivery/web" />
     <Parameter name="UseAop" value="true" />
   </TestRunParameters>
     <MSTest>
     <Parallelize>
-      <Workers>4</Workers>
+      <Workers>2</Workers>
       <Scope>MethodLevel</Scope>
     </Parallelize>
     <MapInconclusiveToFailed>True</MapInconclusiveToFailed>
