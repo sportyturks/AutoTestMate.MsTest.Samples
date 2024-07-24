@@ -4,7 +4,7 @@
   <!-- Configurations that affect the Test Framework -->
   <RunConfiguration>
     <!-- Please note that relative home directory not support and needs to be explicit, i.e ~/.local/share/autotestmate/logs -->
-    <ResultsDirectory>/home/sporty-turks/.local/share/autotestmate/logs/test-results/</ResultsDirectory>
+    <ResultsDirectory>/home/sportyturks/.local/share/autotestmate/logs/test-results/</ResultsDirectory>
     <!-- [x86] | x64    - You can also change it from menu Test, Test Settings, Default Processor Architecture -->
     <TargetPlatform>x64</TargetPlatform>
     <DisableParallelization>false</DisableParallelization>

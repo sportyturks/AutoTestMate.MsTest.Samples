@@ -10,7 +10,7 @@ namespace AutoTestMate.Calculator.Tests;
 [TestClass]
 public class CalculatorDataDrivenTests : WebTestBase
 {
-    public override string TestMethod => ReflectionExtensions.GetPropValue<string>(TestContext, "Context.testMethod.DisplayName");
+    public override string TestMethod => ReflectionExtensions.GetPropValue<string>(TestContext, "Context._testMethod.DisplayName");
 
     [TestMethod]
     [DataRow("1,+,1", 2, DisplayName = "CalculateDataRowTest_1")]
