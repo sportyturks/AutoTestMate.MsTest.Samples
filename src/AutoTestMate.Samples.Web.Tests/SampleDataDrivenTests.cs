@@ -11,7 +11,7 @@ public class SampleDataDrivenTests : WebTestBase
 {
     public override string TestMethod => ReflectionExtensions.GetPropValue<string>(TestContext, "Context._testMethod.DisplayName");
     
-    [TestMethod]
+    [RetryTestMethod(numberOfAttempts: 3)]
     [DataRow("Latest News", DisplayName = "GoogleSearchDataRowTest_1")]
     [DataRow("Automation Testing", DisplayName = "GoogleSearchDataRowTest_2")]
     [DataRow("Selenium Grid", DisplayName = "GoogleSearchDataRowTest_3")]

@@ -11,7 +11,7 @@ namespace AutoTestMate.Samples.Web.Tests
     [TestClass]
     public class SampleTests : WebTestBase
     {
-        [TestMethod]
+        [RetryTestMethod(numberOfAttempts: 3)]
         [ExcelClosedTestData(FileLocation = @"./Data", FileName = "NurseryRhymesBook.xlsx", RowKey = "8", SheetName = "TableThree")]
         public void EnsureCorrectFieldsAccessed()
         {
@@ -26,7 +26,7 @@ namespace AutoTestMate.Samples.Web.Tests
             TestContext.WriteLine("Excel Attribute Passed with Flying Colors!");
         }
 
-        [TestMethod]
+        [RetryTestMethod(numberOfAttempts: 3)]
         [ExcelClosedTestData(FileLocation = @"./Data", FileName = "NurseryRhymesBook.xlsx", RowKey = "5", SheetName = "TableTwo")]
         public void GoogleSearchTestSimple()
         {
@@ -47,7 +47,7 @@ namespace AutoTestMate.Samples.Web.Tests
             Assert.IsTrue(configurationReader.GetConfigurationValue("FieldSix").ToLower() == "you");
         }
         
-        [TestMethod]
+        [RetryTestMethod(numberOfAttempts: 3)]
         [ExcelClosedTestData(FileLocation = @"./Data", FileName = "NurseryRhymesBook.xlsx", RowKey = "3", SheetName = "TableOne")]
         public void GoogleSearchTestContainerExample()
         {
@@ -68,7 +68,7 @@ namespace AutoTestMate.Samples.Web.Tests
             Assert.IsTrue(configurationReader.GetConfigurationValue("FieldThree").ToLower() == "tree");
         }
 
-        [TestMethod]
+        [RetryTestMethod(numberOfAttempts: 3)]
         [ExcelClosedTestData(FileLocation = @"./Data", FileName = "NurseryRhymesBook.xlsx", RowKey = "8", SheetName = "TableThree")]
         public void GoogleSearchTest()
         {

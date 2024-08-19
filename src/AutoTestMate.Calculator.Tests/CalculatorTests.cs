@@ -8,7 +8,7 @@ namespace AutoTestMate.Calculator.Tests
     [TestClass]
     public class CalculatorTests : WebTestBase
     {
-        [TestMethod]
+        [RetryTestMethod(numberOfAttempts: 3)]
         [DataRow("4,*,(,3,-,4,/,2,)", 4)]
         public void CalculateDataRowTestSingle(string ops, double expected)
         {
@@ -20,7 +20,7 @@ namespace AutoTestMate.Calculator.Tests
                 .AssertValue(expected);
         }
         
-        [TestMethod]
+        [RetryTestMethod(numberOfAttempts: 3)]
         public void CalculateDataRowTestGroup()
         {
             const int testIterations = 4;

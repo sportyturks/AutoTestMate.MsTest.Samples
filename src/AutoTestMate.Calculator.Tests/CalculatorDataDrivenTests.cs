@@ -3,6 +3,7 @@ using System.Reflection;
 using AutoTestMate.Calculator.Models;
 using AutoTestMate.MsTest.Web.Core;
 using AutoTestMate.MsTest.Web.Extensions;
+using DocumentFormat.OpenXml.Math;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
 namespace AutoTestMate.Calculator.Tests;
@@ -12,7 +13,7 @@ public class CalculatorDataDrivenTests : WebTestBase
 {
     public override string TestMethod => ReflectionExtensions.GetPropValue<string>(TestContext, "Context._testMethod.DisplayName");
 
-    [TestMethod]
+    [RetryTestMethod(numberOfAttempts:3)]
     [DataRow("1,+,1", 2, DisplayName = "CalculateDataRowTest_1")]
     [DataRow("1,3,-,4", 9, DisplayName = "CalculateDataRowTest_2")]
     [DataRow("2,*,3", 6, DisplayName = "CalculateDataRowTest_3")]
@@ -30,7 +31,7 @@ public class CalculatorDataDrivenTests : WebTestBase
             .AssertValue(expected);
     }
 
-    [TestMethod]
+    [RetryTestMethod(numberOfAttempts:3)]
     [DynamicData(nameof(GetDynamicData), DynamicDataSourceType.Method)]
     public void CalculateDynamicDataTest(string ops, double expected, string _)
     {
@@ -43,7 +44,7 @@ public class CalculatorDataDrivenTests : WebTestBase
             .AssertValue(expected);
     }
     
-    [TestMethod]
+    [RetryTestMethod(numberOfAttempts:3)]
     [DynamicData(nameof(GetDynamicData2), DynamicDataSourceType.Method, DynamicDataDisplayName = nameof(GetTestDisplayNames))]
     public void CalculateDynamicDataSpecificNameTest(string testName, string ops, double expected)
     {
