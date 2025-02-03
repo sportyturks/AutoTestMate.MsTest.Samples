@@ -18,6 +18,14 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AutoTestMate.Calculator.Mod
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AutoTestMate.Calculator.Tests", "AutoTestMate.Calculator.Tests\AutoTestMate.Calculator.Tests.csproj", "{736F978C-8754-40D1-8953-5CF6F185CA5A}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AutoTestMate.Playwright.Calculator.Tests", "AutoTestMate.Playwright.Calculator.Tests\AutoTestMate.Playwright.Calculator.Tests.csproj", "{7002F5FA-7758-4039-9022-04D302ACE272}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AutoTestMate.Playwright.Samples.Web.Models", "AutoTestMate.Playwright.Samples.Web.Models\AutoTestMate.Playwright.Samples.Web.Models.csproj", "{0DA08AC5-2AE6-4F88-B74D-8398B1C8B079}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AutoTestMate.Playwright.Samples.Web.Tests", "AutoTestMate.Playwright.Samples.Web.Tests\AutoTestMate.Playwright.Samples.Web.Tests.csproj", "{180929B1-65F2-4BDE-ADFC-DF2BE062215D}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AutoTestMate.Playwright.Calculator.Models", "AutoTestMate.Playwright.Calculator.Models\AutoTestMate.Playwright.Calculator.Models.csproj", "{26CD0191-D16C-43A5-BB05-40736D40E349}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -40,11 +48,29 @@ Global
 		{736F978C-8754-40D1-8953-5CF6F185CA5A}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{736F978C-8754-40D1-8953-5CF6F185CA5A}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{736F978C-8754-40D1-8953-5CF6F185CA5A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7002F5FA-7758-4039-9022-04D302ACE272}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7002F5FA-7758-4039-9022-04D302ACE272}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7002F5FA-7758-4039-9022-04D302ACE272}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7002F5FA-7758-4039-9022-04D302ACE272}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0DA08AC5-2AE6-4F88-B74D-8398B1C8B079}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0DA08AC5-2AE6-4F88-B74D-8398B1C8B079}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0DA08AC5-2AE6-4F88-B74D-8398B1C8B079}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0DA08AC5-2AE6-4F88-B74D-8398B1C8B079}.Release|Any CPU.Build.0 = Release|Any CPU
+		{180929B1-65F2-4BDE-ADFC-DF2BE062215D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{180929B1-65F2-4BDE-ADFC-DF2BE062215D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{180929B1-65F2-4BDE-ADFC-DF2BE062215D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{180929B1-65F2-4BDE-ADFC-DF2BE062215D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{26CD0191-D16C-43A5-BB05-40736D40E349}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{26CD0191-D16C-43A5-BB05-40736D40E349}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{26CD0191-D16C-43A5-BB05-40736D40E349}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{26CD0191-D16C-43A5-BB05-40736D40E349}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {F63A4790-4AA9-4252-8CF4-C2B34DE202F9}
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
 	EndGlobalSection
 EndGlobal
