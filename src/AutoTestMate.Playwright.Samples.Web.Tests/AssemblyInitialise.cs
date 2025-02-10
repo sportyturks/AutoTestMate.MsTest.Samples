@@ -11,7 +11,7 @@ namespace AutoTestMate.Playwright.Samples.Web.Tests
         public static void Initialise(TestContext testContext)
         {
             PlaywrightTestManager.Instance.OnInitialiseAssemblyDependencies(testContext);
-            PlaywrightTestManager.Instance.Container.Register(Classes.FromAssemblyNamed($"AutoTestMate.Samples.Web.Models.dll").BasedOn(typeof(BasePage)).LifestyleTransient());
+            PlaywrightTestManager.Instance.Container.Register(Classes.FromAssemblyNamed($"AutoTestMate.Playwright.Samples.Web.Models.dll").BasedOn(typeof(PlaywrightBasePage)).LifestyleTransient());
         }
 
         [AssemblyCleanup]

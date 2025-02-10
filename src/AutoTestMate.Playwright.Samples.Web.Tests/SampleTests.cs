@@ -1,12 +1,13 @@
+using System.Threading.Tasks;
 using AutoTestMate.MsTest.Infrastructure.Attributes;
-using AutoTestMate.MsTest.Web.Core;
-using AutoTestMate.Samples.Web.Models;
+using AutoTestMate.MsTest.Playwright.Core;
+using AutoTestMate.Playwright.Samples.Web.Models;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
 namespace AutoTestMate.Playwright.Samples.Web.Tests
 {
     [TestClass]
-    public class SampleTests : WebTestBase
+    public class SampleTests : PlaywrightTestBase
     {
         [RetryTestMethod(numberOfAttempts: 3)]
         [ExcelClosedTestData(FileLocation = @"./Data", FileName = "NurseryRhymesBook.xlsx", RowKey = "8", SheetName = "TableThree")]
@@ -23,17 +24,22 @@ namespace AutoTestMate.Playwright.Samples.Web.Tests
             TestContext.WriteLine("Excel Attribute Passed with Flying Colors!");
         }
 
-        [RetryTestMethod(numberOfAttempts: 3)]
+        //[RetryTestMethod(numberOfAttempts: 3)]
+        [TestMethod]
         [ExcelClosedTestData(FileLocation = @"./Data", FileName = "NurseryRhymesBook.xlsx", RowKey = "5", SheetName = "TableTwo")]
-        public void GoogleSearchTestSimple()
+        public async Task GoogleSearchTestSimple()
         {
             var googleSearchPage = GetPage<GoogleSearchPage>();
 
-            googleSearchPage
-                .Open()
-                .AddSearchText("Latest News")
-                .ClickSearchBox()
-                .ClickSearchButton();
+            await googleSearchPage
+                .Open();
+            
+            await googleSearchPage
+                    .AddSearchText("Latest News").ConfigureAwait(false);
+            await googleSearchPage
+                    .ClickSearchBox().ConfigureAwait(false);
+            await googleSearchPage
+                    .ClickSearchButton();
 
             var configurationReader = GetConfigurationReader();
 
@@ -46,14 +52,16 @@ namespace AutoTestMate.Playwright.Samples.Web.Tests
         
         [RetryTestMethod(numberOfAttempts: 3)]
         [ExcelClosedTestData(FileLocation = @"./Data", FileName = "NurseryRhymesBook.xlsx", RowKey = "3", SheetName = "TableOne")]
-        public void GoogleSearchTestContainerExample()
+        public async Task GoogleSearchTestContainerExample()
         {
             var googleSearchPage = GetPage<GoogleSearchPage>();
 
+            await googleSearchPage
+                .Open().ConfigureAwait(false);
+            
             googleSearchPage
-                .Open()
-                .AddSearchText("Dependency Injection")
-                .ClickSearchBox()
+                .AddSearchText("Dependency Injection").Result
+                .ClickSearchBox().Result
                 .ClickSearchButton();
 
             var configurationReader = GetConfigurationReader();
@@ -67,7 +75,7 @@ namespace AutoTestMate.Playwright.Samples.Web.Tests
 
         [RetryTestMethod(numberOfAttempts: 3)]
         [ExcelClosedTestData(FileLocation = @"./Data", FileName = "NurseryRhymesBook.xlsx", RowKey = "8", SheetName = "TableThree")]
-        public void GoogleSearchTest()
+        public async Task GoogleSearchTest()
         {
             var googleSearchPage = GetPage<GoogleSearchPage>();
             var s = ConfigurationReader.Settings;
@@ -75,9 +83,10 @@ namespace AutoTestMate.Playwright.Samples.Web.Tests
             TestManager.TestContext.WriteLine($"Test ExcelData Google search for {search}");
 
             googleSearchPage
-                .Open()
-                .AddSearchText(search)
-                .ClickSearchBox()
+                .Open();
+                await googleSearchPage
+                .AddSearchText(search).Result
+                .ClickSearchBox().Result
                 .ClickSearchButton();
 
             Assert.IsNotNull(ConfigurationReader);
