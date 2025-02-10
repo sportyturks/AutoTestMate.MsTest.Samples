@@ -1,44 +1,46 @@
 ﻿using System.Runtime.CompilerServices;
+using System.Threading.Tasks;
 using AutoTestMate.MsTest.Playwright.Constants;
 using AutoTestMate.MsTest.Playwright.Core;
 using AutoTestMate.MsTest.Playwright.Core.Attributes;
+using Microsoft.Playwright;
 
 namespace AutoTestMate.Playwright.Samples.Web.Models
 {
-    public partial class GoogleSearchPage : PlaywrightBasePage, IGoogleSearchPage
+    public partial class GoogleSearchPage : PlaywrightBasePage
     {
+        private IPage _page => PlaywrightDriver.CurrentPage;
         public GoogleSearchPage([CallerMemberName] string testName = null) : base(testName)
         {
         }
 
         [Retry(Amount = 3, Interval = 200)]
-        public virtual GoogleSearchPage Open()
+        public virtual async Task<GoogleSearchPage> Open()
         {
-            Driver.Navigate().GoToUrl(ConfigurationReader.GetConfigurationValue(MsTest.Web.Constants.Configuration.BaseUrlKey));
+            await _page.GotoAsync(ConfigurationReader.GetConfigurationValue("BaseUrl")).ConfigureAwait(false);
             return this;
         }
 
-        public GoogleSearchPage AddSearchText(string text)
+        public virtual async Task<GoogleSearchPage> AddSearchText(string text)
         {
-            SearchTextBox.VisibleWait();
-            SearchTextBox.Click();
-            SearchTextBox.SendKeys(text);
+            await SearchTextBox.WaitForAsync().ConfigureAwait(false);
+            await SearchTextBox.ClickAsync().ConfigureAwait(false);
+            await SearchTextBox.TypeAsync(text).ConfigureAwait(false);
+            return this;
+        }
+
+        public virtual async Task<GoogleSearchPage> ClickSearchBox()
+        {
+            await SearchTextBox.WaitForAsync().ConfigureAwait(false);
+            await SearchTextBox.ClickAsync().ConfigureAwait(false);
 
             return this;
         }
 
-        public GoogleSearchPage ClickSearchBox()
+        public virtual async Task<GoogleSearchPage> ClickSearchButton()
         {
-            SearchTextBox.VisibleWait();
-            SearchTextBox.Click();
-
-            return this;
-        }
-
-        public GoogleSearchPage ClickSearchButton()
-        {
-            SearchButton.VisibleWait();
-            SearchButton.Click();
+            await SearchButton.WaitForAsync().ConfigureAwait(false);
+            await SearchButton.ClickAsync().ConfigureAwait(false);
 
             return this;
         }

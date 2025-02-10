@@ -1,12 +1,13 @@
 ﻿
+using AutoTestMate.MsTest.Playwright.Constants;
+using Microsoft.Playwright;
+
 namespace AutoTestMate.Playwright.Samples.Web.Models
 {
     public partial class GoogleSearchPage
     {
-	    public IWebElement SearchTextBox => Driver.FindElement(By.XPath("//textarea[@name='q']"));
-
-	    public IWebElement ResultSearchButton => Driver.FindElement(By.XPath("//button[@aria-label='Google Search']"));
-
-	    public IWebElement SearchButton => Driver.FindElement(By.XPath("//div//input[@value='Google Search']"));
+	    public ILocator SearchTextBox => _page.Locator("//textarea[@name='q']").First;
+	    public ILocator ResultSearchButton => _page.Locator("//button[@aria-label='Google Search']");
+	    public ILocator SearchButton => _page.Locator("//div//input[@value='Google Search']").First;
     }
 }

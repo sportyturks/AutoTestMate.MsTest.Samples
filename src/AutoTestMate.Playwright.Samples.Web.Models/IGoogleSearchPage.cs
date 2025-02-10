@@ -1,25 +1,17 @@
 ﻿
+using System.Threading.Tasks;
+using Microsoft.Playwright;
+
 namespace AutoTestMate.Playwright.Samples.Web.Models
 {
     public interface IGoogleSearchPage
     {
-        IWebElement SearchTextBox { get; }
-        IWebElement ResultSearchButton { get; }
-        IWebElement SearchButton { get; }
-        GoogleSearchPage Open();
-        GoogleSearchPage AddSearchText(string text);
-        GoogleSearchPage ClickSearchButton();
-        void GoogleSearchPageAssertions();
-    }
-
-    public interface IGoogleSearchPageContainer
-    {
-        IWebElement SearchTextBox { get; }
-        IWebElement ResultSearchButton { get; }
-        IWebElement SearchButton { get; }
-        GoogleSearchPageContainer Open();
-        GoogleSearchPageContainer AddSearchText(string text);
-        GoogleSearchPageContainer ClickSearchButton();
-        void GoogleSearchPageAssertions();
+        ILocator SearchTextBox { get; }
+        ILocator ResultSearchButton { get; }
+        ILocator SearchButton { get; }
+        Task<GoogleSearchPage> Open();
+        Task<GoogleSearchPage> AddSearchText(string text);
+        Task<GoogleSearchPage> ClickSearchButton();
+        Task GoogleSearchPageAssertions();
     }
 }
