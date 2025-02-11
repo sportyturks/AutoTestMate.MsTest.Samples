@@ -5,7 +5,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="AutoTestMate.MsTest.Web" Version="0.1.15" />
+    <PackageReference Include="AutoTestMate.MsTest.Playwright" Version="0.1.15" />
   </ItemGroup>
 
 </Project>
