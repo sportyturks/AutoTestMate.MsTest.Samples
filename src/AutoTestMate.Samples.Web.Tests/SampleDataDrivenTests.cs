@@ -1,4 +1,3 @@
-using AutoTestMate.MsTest.Infrastructure.Attributes;
 using AutoTestMate.MsTest.Web.Core;
 using AutoTestMate.MsTest.Web.Extensions;
 using AutoTestMate.Samples.Web.Models;

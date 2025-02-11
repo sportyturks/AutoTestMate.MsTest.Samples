@@ -11,7 +11,8 @@ namespace AutoTestMate.Playwright.Calculator.Tests
         public static void Initialise(TestContext testContext)
         {
             PlaywrightTestManager.Instance.OnInitialiseAssemblyDependencies(testContext);
-            PlaywrightTestManager.Instance.Container.Register(Classes.FromAssemblyNamed($"AutoTestMate.Calculator.Models.dll").BasedOn(typeof(BasePage)).LifestyleTransient());
+            PlaywrightTestManager.Instance.Container.Register(Classes
+                .FromAssemblyNamed($"AutoTestMate.Playwright.Calculator.Models.dll").BasedOn(typeof(PlaywrightBasePage)).LifestyleTransient());
         }
 
         [AssemblyCleanup]

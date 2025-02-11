@@ -1,70 +1,87 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.Runtime.CompilerServices;
+using System.Threading.Tasks;
+using AutoTestMate.MsTest.Infrastructure.Helpers;
+using AutoTestMate.MsTest.Playwright.Constants;
 using AutoTestMate.MsTest.Playwright.Core;
 using AutoTestMate.MsTest.Playwright.Core;
 using AutoTestMate.MsTest.Playwright.Core.Attributes;
 using AutoTestMate.MsTest.Playwright.Extensions;
+using Microsoft.Playwright;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
 namespace AutoTestMate.Playwright.Calculator.Models
 {
-    public class CalculatorPage : PlaywrightTestBase
+    public class CalculatorPage : PlaywrightBasePage
     {
         public const string CalculatorSelector = "body > div > main > div > h1";
         public const string ResultId = "txtResult";
         public const string AddId = "add";
         public const string SubId = "sub";
         public const string MulId = "mul";
+
         public const string DivId = "div";
         public const string ObId = "ob"; // open bracket button
         public const string CbId = "cb"; // closed bracket button
         public const string ResultBtnId = "result";
+        private IPage _page => PlaywrightDriver.CurrentPage;
 
-        public virtual void LoadOperations()
+        public void LoadOperations()
         {
-            this.NumButtons = new List<IWebElement>();
             for (var i = 0; i < 10; i++)
             {
-                NumButtons.Add(Driver.FindElement(By.Id(i.ToString())));
+                NumButtons.Add(_page.Locator($"[id='{i}']")); // Assuming button IDs are in the format "btn0", "btn1", etc.
             }
-            Ops = new Dictionary<string, IWebElement>() { { "+", Add }, { "-", Sub }, { "*", Mul }, { "/", Div }, { "(", Ob }, { ")", Cb } };
+
+            Ops = new Dictionary<string, ILocator>()
+            {
+                { "+", Add },
+                { "-", Sub },
+                { "*", Mul },
+                { "/", Div },
+                { "(", _page.Locator($"[id='ob']") },
+                { ")", _page.Locator($"[id='cb']")  }
+            };
+
             for (var i = 0; i < 10; i++)
             {
                 Ops.Add(i.ToString(), NumButtons[i]);
             }
         }
 
-        public IWebElement Calculator => Driver.FindElement(By.CssSelector(CalculatorSelector));
-        public IWebElement Result => Driver.FindElement(By.Id(ResultId));
-        public List<IWebElement> NumButtons { get; private set; }
-        public IWebElement Add => Driver.FindElement(By.Id(AddId));
-        public IWebElement Sub => Driver.FindElement(By.Id(SubId));
-        public IWebElement Mul => Driver.FindElement(By.Id(MulId));
-        public IWebElement Div => Driver.FindElement(By.Id(DivId));
-        public IWebElement Ob => Driver.FindElement(By.Id(ObId));
-        public IWebElement Cb => Driver.FindElement(By.Id(CbId));
-        public IWebElement ResultBtn => Driver.FindElement(By.Id(ResultBtnId));
-        public IWebElement Clr => Driver.FindElement(By.Id("clr"));
-        public IWebElement Zero => Driver.FindElement(By.Id("0"));
-        public IWebElement One => Driver.FindElement(By.Id("1"));
-        public IWebElement Two => Driver.FindElement(By.Id("2"));
-        public IWebElement Three => Driver.FindElement(By.Id("3"));
-        public IWebElement Four => Driver.FindElement(By.Id("4"));
-        public IWebElement Five => Driver.FindElement(By.Id("5"));
-        public IWebElement Six => Driver.FindElement(By.Id("6"));
-        public IWebElement Seven => Driver.FindElement(By.Id("7"));
-        public IWebElement Eight => Driver.FindElement(By.Id("8"));
-        public IWebElement Nine => Driver.FindElement(By.Id("9"));
-        public IDictionary<string, IWebElement> Ops { get; private set; } = new Dictionary<string, IWebElement>();
+        public IElementHandle Calculator => AsyncHelper.RunSync(() =>  _page.QuerySelectorAsync($"{CalculatorSelector}"));
+        public ILocator Result => _page.Locator($"[id='{ResultId}']");
+        public List<ILocator> NumButtons { get; private set; }
+        public ILocator  Add => _page.Locator($"[id='{AddId}']");
+        public ILocator  Sub => _page.Locator($"[id='{SubId}']");
+        public ILocator  Mul => _page.Locator($"[id='{MulId}']");
+        public ILocator  Div => _page.Locator($"[id='{DivId}']");
+        public ILocator  Ob => _page.Locator($"[id='{ObId}']");
+        public ILocator  Cb => _page.Locator($"[id='{CbId}']");
+        public ILocator  ResultBtn => _page.Locator($"[id='{ResultBtnId}']");
+        public ILocator  Clr => _page.Locator($"[id='clr']");
+        public ILocator  Zero => _page.Locator($"[id='0']");
+        public ILocator  One => _page.Locator($"[id='1']");
+        public ILocator  Two => _page.Locator($"[id='2']");
+        public ILocator  Three => _page.Locator($"[id='3']");
+        public ILocator  Four => _page.Locator($"[id='4']");
+        public ILocator  Five => _page.Locator($"[id='5']");
+        public ILocator  Six => _page.Locator($"[id='6']");
+        public ILocator  Seven => _page.Locator($"[id='7']");
+        public ILocator  Eight => _page.Locator($"[id='8']");
+        public ILocator Nine => _page.Locator($"[id='9']");
+        public IDictionary<string, ILocator> Ops { get; private set; } = new Dictionary<string, ILocator>();
 
         public CalculatorPage([CallerMemberName] string testName = null) : base(testName)
         {
+            NumButtons = [];
         }
 
         public CalculatorPage Open()
         {
-            Driver.Navigate().GoToUrl($"{ConfigurationReader.GetConfigurationValue("CalculatorHomePageUrl")}");
+            AsyncHelper.RunSync(() => _page.GotoAsync(ConfigurationReader.GetConfigurationValue("CalculatorHomePageUrl")));
             LoadOperations();
             return this;
         }
@@ -78,52 +95,32 @@ namespace AutoTestMate.Playwright.Calculator.Models
             var opKeys = ops.Split(",");
             foreach (var opKey in opKeys)
             {
-                Ops[opKey].Click();
+                AsyncHelper.RunSync(() => Ops[opKey].ClickAsync());
             }
-            ResultBtn.VisibleWait();
-            ResultBtn.Click();
-            WaitForReady(8);
+            AsyncHelper.RunSync(() => ResultBtn.ClickAsync());
+
+            //WaitForReady(8);
             return this;
         }
 
-        public virtual CalculatorPage WaitForReady(uint waitSeconds)
+        public virtual CalculatorPage WaitForReady(int waitSeconds)
         {
-            var wait = new WebDriverWait(Driver, TimeSpan.FromSeconds(waitSeconds));
-            try
-            {
-                wait.Until(driver =>
-                {
-                    if (driver == null)
-                    {
-                        return false;
-                    }
-                    
-                    var isSpinnerHidden = (bool)((IJavaScriptExecutor)driver).ExecuteScript("return document.getElementById(\"spinner\") == null;");
-                    
-                    return isSpinnerHidden;
-                });
-            }
-            catch
-            {
-                //do nothing and continue test
-            }
-
+            AsyncHelper.RunSync(() => Task.Delay(waitSeconds * 1000));
+            
             return this;
         }
 
         [Retry(Amount = 3, Interval = 200)]
         public virtual CalculatorPage Clear()
         {
-            Clr.VisibleWait();
-            Clr.Click();
+            AsyncHelper.RunSync(() => Clr.ClickAsync());
             return this;
         }
         
         public virtual CalculatorPage AssertValue(double expected)
         {
-            Result.VisibleWait();
-            var value = Result.GetAttribute("value");
-            Assert.AreEqual(expected.ToString(), value);
+            var value = AsyncHelper.RunSync(() => Result.InputValueAsync());
+            Assert.AreEqual(expected.ToString(CultureInfo.InvariantCulture), value);
             
             return this;
         }
