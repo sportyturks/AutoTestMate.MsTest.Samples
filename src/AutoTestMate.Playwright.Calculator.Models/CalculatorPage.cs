@@ -26,7 +26,7 @@ namespace AutoTestMate.Playwright.Calculator.Models
         public const string ObId = "ob"; // open bracket button
         public const string CbId = "cb"; // closed bracket button
         public const string ResultBtnId = "result";
-        private IPage _page => PlaywrightDriver.CurrentPage;
+        private IPage _page => PlaywrightDriver.Page;
 
         public void LoadOperations()
         {

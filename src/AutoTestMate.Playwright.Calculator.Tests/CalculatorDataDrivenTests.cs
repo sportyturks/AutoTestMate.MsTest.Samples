@@ -21,10 +21,9 @@ public class CalculatorDataDrivenTests : PlaywrightTestBase
     [DataRow("4,*,(,3,-,4,/,2,)", 4, DisplayName = "CalculateDataRowTest_6")]
     public void CalculateDataRowTest(string ops, double expected)
     {
-
         LoggingUtility.Info($"Operation: {ops.Replace(",", " ")} = {expected}", true);
 
-        var calcPage = GetPage<CalculatorPage>(TestMethod)
+        GetPage<CalculatorPage>(TestMethod)
             .Open()
             .Calculate(ops)
             .AssertValue(expected);
