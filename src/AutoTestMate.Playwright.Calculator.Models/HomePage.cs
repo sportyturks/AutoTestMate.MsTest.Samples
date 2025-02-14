@@ -11,7 +11,7 @@ namespace AutoTestMate.Playwright.Calculator.Models
         public HomePage([CallerMemberName] string testName = null) : base(testName)
         {
         }
-        private IPage _page => PlaywrightDriver.CurrentPage;
+        private IPage _page => PlaywrightDriver.Page;
 
         public async Task<HomePage> Open()
         {

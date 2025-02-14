@@ -9,7 +9,7 @@ namespace AutoTestMate.Playwright.Samples.Web.Models
 {
     public partial class GoogleSearchPage : PlaywrightBasePage
     {
-        private IPage _page => PlaywrightDriver.CurrentPage;
+        private IPage _page => PlaywrightDriver.Page;
         public GoogleSearchPage([CallerMemberName] string testName = null) : base(testName)
         {
         }
